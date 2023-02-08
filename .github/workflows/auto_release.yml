@@ -113,12 +113,9 @@ jobs:
           echo "Build Time:" $BuildTime
           echo "Build Finish"
           echo "--------------------------------------------"
-      - name: create release and upload asset
-        uses: svenstaro/upload-release-action@v2
+      - name : Upload packages
+        uses: actions/upload-artifact@master
+        if: always()
         with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: bin/releaseUpload/*
-          file_glob: true
-          tag: ${{ github.ref }}
-          overwrite: true
-          body: "[bot] automatically publish packages compiled with the latest source code"
+          name: UnblockNeteaseMusic-packages
+          path: bin/releaseUpload/
