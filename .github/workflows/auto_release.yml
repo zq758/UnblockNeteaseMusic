@@ -1,6 +1,8 @@
 name: release Unblockneteasemusic
 on:
   push:
+  watch:
+    types: [started]
 jobs:
   build_luci:
     runs-on: ubuntu-latest
